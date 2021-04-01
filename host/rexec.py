@@ -41,11 +41,13 @@ shell_err = None
 
 def getc(size, timeout=1):
     global ser
+    print(".", end="", flush=True)
     res = ser.read(size)
     return res or None
 
 def putc(data, timeout=1):
     global ser
+    print(".", end="", flush=True)
     return ser.write(data)  # note that this ignores the timeout
 
 def handle_shell_returncode(receivedLine):
@@ -116,7 +118,7 @@ def handle_xmodem_send(receivedLine):
             old_stderr = sys.stderr
             sys.stderr = f
 
-            modem.recv(stream, retry=8, quiet=1)
+            modem.recv(stream, retry=12, quiet=1)
 
             sys.stderr = old_stderr
             f.close()
@@ -152,7 +154,7 @@ def handle_xmodem_receive(receivedLine):
             sys.stderr = f
 
             stream = open(filename, 'rb')
-            modem.send(stream, retry=8, quiet=1)
+            modem.send(stream, retry=12, quiet=1)
             stream.close()
 
             sys.stderr = old_stderr
