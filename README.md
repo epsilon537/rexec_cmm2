@@ -4,6 +4,10 @@ Author: Epsilon
 
 Changelog
 ---------
+0.2: 
+- Fix for transfer of very long files
+- Show transfer activity in rexec.py terminal window.
+
 0.1: Initial version
 
 Description
